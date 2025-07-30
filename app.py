@@ -1,3 +1,6 @@
+
+
+
 from flask import Flask, render_template, request
 import smtplib
 from email.mime.text import MIMEText
@@ -7,7 +10,15 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template('kontact.html')
+    
+from flask import Flask, render_template
 
+app = Flask(__name__, static_folder='.', template_folder='.')
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+    
 @app.route('/submit', methods=['POST'])
 def submit():
     name = request.form['name']
@@ -42,3 +53,7 @@ def send_email(name, email, message):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
